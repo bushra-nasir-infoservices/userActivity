@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
@@ -18,27 +19,26 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "id")
     public int userId;
 
     @Column(nullable = false)
     public String username;
 
-//    public String password;
+    @Column(nullable = false)
+    public String password;
 
     @Email
     @Column
     public String email;
 
-    @Column
-    public String gender;
-
-    @Column
-    public int age;
-
-    @Column
+    @Column(name = "created_date")
     @CreationTimestamp
     public Date createdDate;
+
+    @Column(name = "updated_date")
+    @UpdateTimestamp
+    public Date updatedDate;
 
 
     public int getUserId() {
@@ -57,6 +57,14 @@ public class User {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public @Email String getEmail() {
         return email;
     }
@@ -65,27 +73,28 @@ public class User {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public Date getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public User(int userId,String username, String password, String email, Date createdDate, Date updatedDate) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 }

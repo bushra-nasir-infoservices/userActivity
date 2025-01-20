@@ -5,7 +5,6 @@ import com.infoservices.user_activity.repository.UserRepository;
 import com.infoservices.user_activity.service.interfaces.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
 
@@ -35,8 +34,6 @@ public class UserServiceImpl implements UserService {
         User existingUser = getUserById(userId);
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
-        existingUser.setGender(user.getGender());
-        existingUser.setAge(user.getAge());
         userRepository.save(existingUser);
         return existingUser;
     }

@@ -4,8 +4,6 @@ public class UserDTO {
 
     private String username;
     private String email;
-    private String gender;
-    private int age;
 
     public String getUsername() {
         return username;
@@ -23,19 +21,4 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
